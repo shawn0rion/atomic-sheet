@@ -1,0 +1,81 @@
+:root{
+    --sheet-height: 500px;
+    --sheet-width: 1000px;
+    --img-height: calc(var(--sheet-height) / 2);
+    --img-width: calc(var(--sheet-width) / 4);
+}
+
+*{
+    padding: 0; margin: 0; outline: 0; border: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container{
+    height: calc(var(--sheet-height));
+    width: calc(var(--sheet-width));
+    border: 2px solid #000;
+}
+
+.header > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+#sheet{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    height: var(--img-height);
+}
+
+.img-loader{
+    display: none;
+}
+
+.visible{
+    display:inline-block;
+}
+
+img{
+    height: var(--img-height);
+    width: var(--img-width);
+    object-fit: cover;
+}
+
+button{
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,.2);
+}
+
+button:focus{
+    border: 1px solid rgba(0,0,0,.8);
+}
+
+input {
+    font-size: 1.3rem;
+    border: 1px solid rgba(0,0,0.5);
+    width: 150px;
+    padding: 5px;
+}
