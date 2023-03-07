@@ -8,6 +8,7 @@ let saveArr = [];
 let start = document.querySelector('#start');
 let scramble = document.querySelector('#scramble');
 let save = document.querySelector('#save_atom');
+load(resetArrIdx());
 
 start.addEventListener('click', () => {
     load(resetArrIdx());
