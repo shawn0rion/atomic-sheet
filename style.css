@@ -1,8 +1,6 @@
 :root{
-    --sheet-height: 500px;
-    --sheet-width: 1000px;
-    --img-height: calc(var(--sheet-height) / 2);
-    --img-width: calc(var(--sheet-width) / 4);
+    --rows: 2;
+    --cols: 4;
 }
 
 *{
@@ -19,8 +17,7 @@ body{
 }
 
 .container{
-    height: calc(var(--sheet-height));
-    width: calc(var(--sheet-width));
+    display: flex;
     border: 2px solid #000;
 }
 
@@ -35,9 +32,7 @@ body{
 
 #sheet{
     display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    width: 100%;
+    flex-direction: column;
 }
 
 .row{
@@ -54,10 +49,17 @@ body{
     display:inline-block;
 }
 
+.img-wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 img{
-    height: var(--img-height);
-    width: var(--img-width);
-    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 button{
@@ -78,4 +80,11 @@ input {
     border: 1px solid rgba(0,0,0.5);
     width: 150px;
     padding: 5px;
+}
+
+.top-left{
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    font-size: 1.2rem;
 }

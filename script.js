@@ -1,10 +1,14 @@
+let wrapperList = document.querySelectorAll('.img-wrapper');
 let imgList = document.querySelectorAll('img')
+addBarNumber();
+
 let rows = document.querySelectorAll('.row');
 let sheet = document.querySelector('#sheet')
 let saveArr = [];
 let start = document.querySelector('#start');
 let scramble = document.querySelector('#scramble');
 let save = document.querySelector('#save_atom');
+
 start.addEventListener('click', () => {
     load(resetArrIdx());
 })
@@ -57,19 +61,22 @@ function load(arrIdx) {
     clear();
     let clones = [0,0];
     let rowIdx = 0;
-    let breakRow = imgList.length / rows.length;
-    for (let img = 0; img < imgList.length; img++) {
-        if (img % breakRow == 0 && img != 0) {
+    let splitIdx = 4;
+    //if img list is greater than 4, split into two rows
+    for (let img = 0; img < wrapperList.length; img++) {
+        if (img % splitIdx === 0 && img !== 0) {
             rowIdx += 1;
         }
         // when a saved idx reappears
         if (inArray(arrIdx.slice(0,img), arrIdx[img])){
-            let clone = imgList[arrIdx[img]].cloneNode(true);
+            let clone = wrapperList[arrIdx[img]].cloneNode(true);
             rows[rowIdx].appendChild(clone);
             clones[rowIdx] += 1;
         }
         else{
-            rows[rowIdx].appendChild(imgList[arrIdx[img]]);
+            console.log(wrapperList[img])
+            console.log(rowIdx)
+            rows[rowIdx].appendChild(wrapperList[arrIdx[img]]);
         }
 
         if (rows.item(rowIdx).childNodes.length > 4){
@@ -78,6 +85,17 @@ function load(arrIdx) {
         }
     }
 
+}
+
+function addBarNumber() {
+    for (let i = 0; i < wrapperList.length; i++){
+        let img = document.getElementById(i + 1);
+        let wrapper = img.parentNode;
+        let div = document.createElement('div');
+        div.innerHTML = i + 1;
+        div.classList.add('top-left');
+        wrapper.appendChild(div);
+    }
 }
 
 function snip(row){
