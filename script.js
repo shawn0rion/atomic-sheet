@@ -94,7 +94,7 @@ function addBarNumber() {
         let wrapper = img.parentNode;
         let div = document.createElement('div');
         div.innerHTML = i + 1;
-        div.classList.add('top-left');
+        div.classList.add('top-right');
         wrapper.appendChild(div);
     }
 }
